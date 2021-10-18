@@ -5,7 +5,7 @@ import { Survey, saveSurvey } from '../../reduxSlices/SurveySlice';
 import { Options, Child } from '../../types/Survey';
 
 // Material UI
-import { Button, InputLabel, Modal, Alert } from '@mui/material';
+import { Button, InputLabel, Modal, Alert, Box } from '@mui/material';
 import { Typography, Container, TextField, Checkbox, FormGroup, FormControlLabel} from '@mui/material';
 
 const SurveyApp = () => {
@@ -15,14 +15,13 @@ const SurveyApp = () => {
   const uploadFileInput: any = useRef(null);
   const [finalSurvey, setFinalSurvey] = useState<Array<Options>>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [showSummary, setShowSummary] = useState<boolean>(false);
 
   //Modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const materialModalStyle = {
+  const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
@@ -49,43 +48,61 @@ const SurveyApp = () => {
 
   const resumeSurvey = () => {
     if (!finalSurvey) return
-    
+  
     return (
-      <ul>
-        {finalSurvey.map((sv: Options, index: number) => {
-          if (sv.typeField === 'checkbox') {
-            return (
-              <li key={index}>
-                <span>{sv.title}</span>
-                <ul className="sublist">{sv.children!.map((ch: Child, index: number) => {
+      <div>      
+        <Button onClick={handleOpen}>Open modal</Button>
+
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Thanks for answering!
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              This is your summary:
+              <ul>
+                {finalSurvey.map((sv: Options, index: number) => {
+                  if (sv.typeField === 'checkbox') {
+                    return (
+                      <li key={index}>
+                        <span><strong>{sv.title}</strong></span>
+                        <ul className="sublist">{sv.children!.map((ch: Child, index: number) => {
+                          return (
+                            <li key={index}>{ch.title}: {ch.checked === true ? 'Yes' : 'No'}</li>
+                          )
+                        })}
+                        </ul>
+                      </li>
+                    )
+                  }
+
                   return (
-                    <li key={index}>{ch.title}: {ch.checked === true ? 'Yes' : 'No'}</li>
+                    <li key={index}>
+                      <span><strong>{sv.title}&nbsp;</strong></span>
+                      <span>{sv.answer}</span>
+                    </li>
                   )
                 })}
-                </ul>
-              </li>
-            )
-          }
-
-          return (
-            <li key={index}>
-              <span>{sv.title}</span>
-              <span>{sv.answer}</span>
-            </li>
-          )
-        })}
-      </ul>
+              </ul>
+            </Typography>
+          </Box>
+        </Modal>
+      </div>
     );
   }
-
+   
   const send = () => {
     dispatch(saveSurvey(finalSurvey));
 
     setTimeout(() => {
-      setShowSummary(true);
+      handleOpen()
     }, 2000);
   }
-
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, objectQuestion: Options, childActive?: number) => {
     const { value } = e.target;
@@ -156,7 +173,7 @@ const SurveyApp = () => {
         <div key={index}>
           <InputLabel htmlFor={`answer_${index}`}>{title}</InputLabel>
           {children && children.map(({ title: titleChild }: Child, indexChild) => (
-            <FormGroup key={index}>
+            <FormGroup key={indexChild}>
               <FormControlLabel 
                 control={
                   <Checkbox 
@@ -186,10 +203,8 @@ const SurveyApp = () => {
 
         <Container sx={{ mb: 4, mt: 4 }}>
         </Container>
-        {showSummary ?
-          <div className="survey__modal" onClick={() => setShowSummary(false)}>
-            {resumeSurvey()}
-          </div>
+        {open ?
+            resumeSurvey()
           : null
         }
         <div className="survey__list">
