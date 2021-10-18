@@ -169,7 +169,7 @@ const Admin = () => {
           </Typography>
           <List disablePadding>
             {surveyState.map(({ title, typeField, children }: Options, index: number) => (
-              <ListItem key={index} sx={{ py: 1, px: 0 }}>
+              <ListItem key={index} sx={{ py: 1, px: 0, flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
                 <ListItemText 
                   primary={`Question ${index+1}: ${title}`} 
                   secondary={`Answer type: ${typeField}`} />
