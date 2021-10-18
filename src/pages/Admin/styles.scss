@@ -1,0 +1,32 @@
+.admin {
+  &__group {
+    .question {
+      &__childremove {
+        margin-left: 10px;
+        border-radius: 50px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        color: #ffffff;
+        background-color: brown;
+        box-sizing: border-box;
+        font-size: 13px;
+        cursor: pointer;
+      }
+    }
+
+    &--parent {
+      display: flex;
+
+      .admin__inputgroup {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  &__questionssaved {
+    margin-top: 15px;
+  }
+}
