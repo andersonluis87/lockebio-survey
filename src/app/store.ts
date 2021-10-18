@@ -5,6 +5,9 @@ import { persistReducer } from "redux-persist";
 import { combineReducers } from 'redux';
 import storage from "redux-persist/lib/storage";
 import thunk from 'redux-thunk';
+import { setAutoFreeze } from 'immer';
+
+setAutoFreeze(false);
 
 const persistConfig = {
   key: 'root',
