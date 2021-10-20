@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.634da6be.chunk.css",
-    "main.js": "./static/js/main.d8ad3b08.chunk.js",
-    "main.js.map": "./static/js/main.d8ad3b08.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.2cbcbed4.js",
-    "runtime-main.js.map": "./static/js/runtime-main.2cbcbed4.js.map",
-    "static/js/2.7b986f81.chunk.js": "./static/js/2.7b986f81.chunk.js",
-    "static/js/2.7b986f81.chunk.js.map": "./static/js/2.7b986f81.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/main.634da6be.chunk.css.map": "./static/css/main.634da6be.chunk.css.map",
-    "static/js/2.7b986f81.chunk.js.LICENSE.txt": "./static/js/2.7b986f81.chunk.js.LICENSE.txt"
+    "main.css": "/lockebio-survey/static/css/main.634da6be.chunk.css",
+    "main.js": "/lockebio-survey/static/js/main.e54cb615.chunk.js",
+    "main.js.map": "/lockebio-survey/static/js/main.e54cb615.chunk.js.map",
+    "runtime-main.js": "/lockebio-survey/static/js/runtime-main.619d20b6.js",
+    "runtime-main.js.map": "/lockebio-survey/static/js/runtime-main.619d20b6.js.map",
+    "static/js/2.7b986f81.chunk.js": "/lockebio-survey/static/js/2.7b986f81.chunk.js",
+    "static/js/2.7b986f81.chunk.js.map": "/lockebio-survey/static/js/2.7b986f81.chunk.js.map",
+    "index.html": "/lockebio-survey/index.html",
+    "static/css/main.634da6be.chunk.css.map": "/lockebio-survey/static/css/main.634da6be.chunk.css.map",
+    "static/js/2.7b986f81.chunk.js.LICENSE.txt": "/lockebio-survey/static/js/2.7b986f81.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2cbcbed4.js",
+    "static/js/runtime-main.619d20b6.js",
     "static/js/2.7b986f81.chunk.js",
     "static/css/main.634da6be.chunk.css",
-    "static/js/main.d8ad3b08.chunk.js"
+    "static/js/main.e54cb615.chunk.js"
   ]
 }
